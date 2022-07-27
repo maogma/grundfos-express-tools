@@ -85,8 +85,8 @@ for index, row in data.iterrows():
                 extraRowsDataframe.loc[currentRow, colV] = keepNumType(header)    
 
 # Writing new dataframe to a new tab in the excel file
-# with pd.ExcelWriter(filePath, engine="openpyxl", mode='a') as writer:  
-#     extraRowsDataframe.to_excel(writer, sheet_name="Expanded Rows", index=False)
+with pd.ExcelWriter(filePath, engine="openpyxl", mode='a') as writer:  
+    extraRowsDataframe.to_excel(writer, sheet_name="Expanded Rows", index=False)
 
 # Adds column to filter out combinations where header is not > branch
 extraRowsDataframe['Valid Combo'] = np.where(extraRowsDataframe[colN] >= extraRowsDataframe[colV], "INVALID","")
