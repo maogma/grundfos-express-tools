@@ -10,8 +10,14 @@ from openpyxl import load_workbook
 import os
 import pandas as pd
 import numpy as np
+import time
+import logging
 
-myDir = r"C:\Users\104092\OneDrive - Grundfos\!Projects\GES Dim Mapping"
+logging.basicConfig(format='%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s', datefmt='%m-%d-%Y %H:%M:%S', level=logging.INFO, filename='logs.txt')
+
+time_logger = logging.getLogger('script_timer')
+
+myDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\git\grundfos-express-tools\GES_Dimension_Expansion"
 myFile = "Mech GRP foundation for VLSE rev6.xlsx"
 filePath = os.path.join(myDir, myFile)
 tabName = "GES_VLSE"
@@ -44,12 +50,15 @@ def keepNumType(numString):
     return
 
 
+start = time.time()
+
 # Iterates through the original dataframe
 for index, row in data.iterrows():
     # Splits any comma separated values in column N
     try:
         branchSizes = row[colN].split(',')
         multiplier1 = len(branchSizes)
+    # If error, then set multiplier to 1 because only one value exists in cell   
     except AttributeError:
         multiplier1 = 1
     
@@ -57,25 +66,31 @@ for index, row in data.iterrows():
     try:
         headerSizes = row[colV].split(',')
         multiplier2 = len(headerSizes)
+    # If error, then set multiplier to 1 because only one value exists in cell   
     except AttributeError:
         multiplier2 = 1
         
     # Checks how many rows to add, and modifies the values in the appropriate columns
+    # "currentRow" variable is used to find last row of dataframe
+    # Case: only 1 value in column N and column V
     if multiplier1 == 1 and multiplier2 == 1:
-        currentRow = len(extraRowsDataframe)
-        extraRowsDataframe.loc[currentRow] = row
+        currentRow = len(extraRowsDataframe)      
+        extraRowsDataframe.loc[currentRow] = row # Copies existing row from original data to new dataframe
+    # Case: only 1 value in column N and multiple in column V
     elif multiplier1 == 1 and multiplier2 > 1:
         for header in headerSizes:
             currentRow = len(extraRowsDataframe)
             extraRowsDataframe.loc[currentRow] = row
             extraRowsDataframe.loc[currentRow, colN] = row[colN]
             extraRowsDataframe.loc[currentRow, colV] = keepNumType(header)
+    # Case: Multiple values in column N and 1 value in column V
     elif multiplier1 > 1 and multiplier2 == 1:
         for branch in branchSizes:
             currentRow = len(extraRowsDataframe)
             extraRowsDataframe.loc[currentRow] = row
             extraRowsDataframe.loc[currentRow, colN] = keepNumType(branch)
             extraRowsDataframe.loc[currentRow, colV] = row[colV]
+    # Case: Multiple values in both column N and column V
     elif multiplier1 > 1 and multiplier2 > 1:
         for branch in branchSizes:
             for header in headerSizes:
@@ -84,14 +99,20 @@ for index, row in data.iterrows():
                 extraRowsDataframe.loc[currentRow, colN] = keepNumType(branch)
                 extraRowsDataframe.loc[currentRow, colV] = keepNumType(header)    
 
+time_logger.info(f"iterating through dataframe took {time.time() - start}")
+
+# Adds an extra column to filter out invalid combinations (where header is not > branch)
+extraRowsDataframe['Valid Combo'] = np.where(extraRowsDataframe[colN] >= extraRowsDataframe[colV], "INVALID","")
+
+write_start = time.time()
+
 # Writing new dataframe to a new tab in the excel file
 with pd.ExcelWriter(filePath, engine="openpyxl", mode='a') as writer:  
     extraRowsDataframe.to_excel(writer, sheet_name="Expanded Rows", index=False)
 
-# Adds column to filter out combinations where header is not > branch
-extraRowsDataframe['Valid Combo'] = np.where(extraRowsDataframe[colN] >= extraRowsDataframe[colV], "INVALID","")
+time_logger.info(f"writing to excel sheet took {time.time() - write_start}")    
 
-# Hiding columns to match source excel sheet
+# Hiding columns to match source excel sheet formatting
 wb = load_workbook(filePath)
 ws = wb["Expanded Rows"]
 ws.column_dimensions.group(start='P', end='R', hidden=True)
