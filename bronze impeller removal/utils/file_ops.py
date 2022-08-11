@@ -13,9 +13,9 @@ def add_filename_timestamp(filepath_to_copy: str) -> str:
     return(working_copy)
 
 
-##############################################################################
-""" This function appends a string to all the files within the directory """
+
 def batchRenameAppend(myDir, appendString):
+    """ This function appends a string to all the files within the directory """
     for root, subdirectories, files in os.walk(myDir):             # Goes through all dir, subdir to find new schematic pdfs
         for file in files:
             pathname, extension = os.path.splitext(file)
@@ -25,10 +25,10 @@ def batchRenameAppend(myDir, appendString):
             newFilename = os.path.join(root, newFilename + extension)
             os.rename(originalFilename, newFilename)
     return
-##############################################################################
 
-""" Iterates through all files within a directory and perform function on each file"""
+
 def iterateSubDirFiles(workingDirectory, *extraFunctions):
+    """ Iterates through all files within a directory and perform function on each file"""
     import os
     
     for root, subdirectories, files in os.walk(workingDirectory):
