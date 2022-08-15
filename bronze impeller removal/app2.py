@@ -6,13 +6,15 @@ import pandas as pd
 import numpy as np
 from openpyxl import load_workbook
 
-### File Setup
 myDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\git\grundfos-express-tools\bronze impeller removal\input files"
 
 # Create working copy
 completed_dir = r"C:\Users\104092\OneDrive - Grundfos\Documents\git\grundfos-express-tools\bronze impeller removal\output files"
+# working_copy = os.path.join(completed_dir, add_filename_timestamp(file))
+# shutil.copyfile(filePath, working_copy) # creates working copy to leave original file untouched
 
 ### List of partnumbers to be removed
+
 list_of_pns = [
     96699290, 97775274, 96699299, 97775277, 96778078,
     97780992, 96699305, 96769184, 97778033, 96769190,
@@ -31,11 +33,11 @@ authority = input("Who authorized/requested this change? ")
 removal_note = timeStamp + " " + reason + " per " + authority
 
 ### Reading in excel to dataframe
+
 # Customize based on PST template used. 
-psd_startrow = 5 # Corresponds to row number containing "second" column headers
+psd_startrow = 6 # Corresponds to row number containing "second" column headers
 psd_startcol = 0
 
-### Grouping and separating data
 def group_then_separate_by(list_of_cols: list, pn_col: str):
     """list of cols are grouping categories. pn_col is the column that contains pns to find matches on."""
     groups = psd_data.groupby(list_of_cols) # Had to play around with this to get the right groupings
@@ -53,9 +55,8 @@ def group_then_separate_by(list_of_cols: list, pn_col: str):
     # Concatenating list of dfs to single dfs.
     removals = pd.concat(df_list_to_remove)
     keep = pd.concat(df_list_to_keep)
-
+        
     return removals, keep
-
 
 """ Iterates through all files within a directory and performs function on each file"""
 for root, subdirectories, files in os.walk(myDir):
@@ -67,15 +68,22 @@ for root, subdirectories, files in os.walk(myDir):
 
         # Read in Excel sheet to a dataframe
         sheetname = "Impeller"
-        psd_data = pd.read_excel(outputPath, sheet_name=sheetname, header=psd_startrow, dtype={'BOM': str}, skipfooter=1)
+        psd_data = pd.read_excel(outputPath, sheet_name=sheetname, header=psd_startrow-1, dtype={'BOM': str})
+        original_psd_bottom_row = len(psd_data) + psd_startrow  
 
         print("Opening file for updates: {}".format(file))
+
+        ### Grouping and separating data
+
+        # Need to find row number of [END] in PSD
+        end_row = psd_data[psd_data['Full Data'] == '[END]'].index.to_list()[0]
+
+        # This removes all the trash removals from the original PSD
+        psd_data = psd_data.iloc[:end_row]
 
         # Find matching partnumber's from list above, and then capture "process variants"
         group_by_columns = ["Model", "Price ID"]  # For just one column, use ["Col 1", ]
         removals, keep = group_then_separate_by(group_by_columns, "BOM")
-
-        ### Cleaning up data
 
         # Dataframe formatting.
         removals.loc[removals["Full Data"] == "[START]", "Full Data"] = "" # This removes the [START] if the first PSD row is flagged to be removed
@@ -87,9 +95,11 @@ for root, subdirectories, files in os.walk(myDir):
         column_list = keep.columns
         removals = removals[column_list] # Reorder columns to match the 2 dataframe columns prior to concatenation
 
-        # Resorts according to ID column to group similar impeller models together.
-        # Should make going through and deleting from the database easier.
         removals.sort_values(by=['ID'], inplace=True)
+        # removals.head(10)
+
+        keep.reset_index(drop=True, inplace=True)
+        keep.loc[0,'Full Data'] = "[START]"
 
         ### Checks for any misses
         # Check for any misses before writing. Should return empty dataframe
@@ -99,27 +109,21 @@ for root, subdirectories, files in os.walk(myDir):
             print("For some reason, the following entries were missed")
             print(keep[keep['BOM'].isin(str_list)])
 
-        ### Preparing excel file with appropriate formatting
         # Create copy of PSD tab with formatting
         wb = load_workbook(outputPath)
-        ws = wb[sheetname]
+        ws = wb['Impeller']
         tabName = sheetname + " No Bronze"
         wb.copy_worksheet(ws).title = tabName
 
         # Find row number to append removals and insert reason why they were removed 
-        original_end_location = len(psd_data) + psd_startrow          # This is the last row of the original PSD (0-indexed) 
-        append_location = original_end_location - len(removals) + 5   # This is the new location/row where we will append the removals to bottom of PSD
+        append_location = original_psd_bottom_row - len(removals) + 1     # This is the new location/row where we will append the removals to bottom of PSD
 
         # Edit New Tab to clear cells with old data after first [END] value is reached
-        num_rows = len(keep)                          # Finds where [END] will be on PSD
+        num_rows = len(keep)                          # Finds where new [END] row will be on PSD
         after_end_row = num_rows + psd_startrow + 1   # Calculates where [END] row + 1 will be in the PSD
 
         ws_modified = wb[tabName]
-        ws_modified.delete_rows(after_end_row-1, len(removals)-1)   # clears the rows containing old data
-
-        # Here we are ensuring the [START] is always there for IQ database to read in. (in case it was removed)
-        start_cell = "{}{}".format('A', psd_startrow+2)
-        ws_modified[start_cell].value = "[START]"
+        ws_modified.delete_rows(after_end_row, len(removals)-1)   # clears the rows containing old data
 
         # Fix formatting
         from openpyxl.styles import PatternFill
@@ -129,10 +133,9 @@ for root, subdirectories, files in os.walk(myDir):
 
         wb.save(outputPath)
 
-        ### Writing to excel file
         # Write resulting dataframes to new sheet in PSD with changes.
         with pd.ExcelWriter(outputPath, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:  
-            keep.to_excel(writer, sheet_name=tabName, index=False, startrow=psd_startrow, startcol=psd_startcol)
+            keep.to_excel(writer, sheet_name=tabName, index=False, startrow=psd_startrow-1, startcol=psd_startcol)
             removals.to_excel(writer, sheet_name=tabName, index=False, header=False, startrow=append_location+1, startcol=psd_startcol)
 
         # Remove original tab, replace with new one?
