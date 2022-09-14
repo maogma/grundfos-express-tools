@@ -2,11 +2,10 @@
 import datetime
 import os
 
-def add_filename_timestampV2(filepath_to_copy: str) -> str:
+def add_str_to_filename(filepath_to_copy: str,strng) -> str:
     """ Creates a working copy of the file. Useful when performing changes to an excel spreadsheet and wanting to keep original file unchanged"""
-    dir, filename = os.path.split(filepath_to_copy) # Splits filepath to folder, file
-    timeStamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    working_copy = timeStamp + " " + filename # adds timestamp to filename
+    _, filename = os.path.split(filepath_to_copy) # Splits filepath to folder, file
+    working_copy = strng + " " + filename # adds timestamp to filename
     return(working_copy)
 
 
