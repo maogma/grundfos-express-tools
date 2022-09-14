@@ -1,12 +1,58 @@
-
 import datetime
 import os
+from os import walk
+from _types._types import *
+
 
 def add_str_to_filename(filepath_to_copy: str,strng) -> str:
-    """ Creates a working copy of the file. Useful when performing changes to an excel spreadsheet and wanting to keep original file unchanged"""
+    """ Appends a string to the file name. """
     _, filename = os.path.split(filepath_to_copy) # Splits filepath to folder, file
     working_copy = strng + " " + filename # adds timestamp to filename
     return(working_copy)
+
+
+def read_files_in_dir(dir:FolderPath)->Generator[Callable,None,None]:
+    """Iterates over a given directory
+    
+    Params:
+        dir: A directory 
+        
+    Returns a generator object that calls a read from file method. 
+    """
+    filenames = next(walk(dir), (None, None, []))[2]
+    for file in filenames:
+        _file=os.path.join(dir, file)
+        yield _read_single_file(_file)
+
+
+def _read_single_file(file:FilePath,chunksize:bytes=1024,is_pool_ready:bool=False)->tuple[bytes,str]:
+    f"""This method read in a file by a given chunk size.
+        Params:
+        file: This is a file like object with supports read, write, and append operations.
+        chunksize: The number of bytes to read in at a time (This is more for the multi-processing/multi-threading process)
+
+        Flags:
+        [NOT IMPLEMENTED] is_pool_ready: This parameter is used to set the mode of the function. If set to True it is initalized to run with threading/multiprocessing.
+
+        Defaults:
+        chunksize = 1024 bytes
+        is_bool_ready=False
+
+        Returns:
+        (data,file) : The return is a tuple of the files binary data in bytes and the file object.  
+        """
+    if is_pool_ready:
+        print('NOT IMPLEMENTED')
+    else:
+        res=b''
+        with open(file,'rb') as f2:
+            while True:
+                data=f2.read(chunksize)
+                if not data:
+                    break
+                res+=data
+            return res,file
+
 
 
 def add_filename_timestamp(filepath_to_copy: str) -> str:
