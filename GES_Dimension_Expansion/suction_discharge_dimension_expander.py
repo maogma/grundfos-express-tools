@@ -13,21 +13,24 @@ import numpy as np
 import time
 import logging
 
+
 logging.basicConfig(format='%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s', datefmt='%m-%d-%Y %H:%M:%S', level=logging.INFO, filename='logs.txt')
 
 time_logger = logging.getLogger('script_timer')
 
-myDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\git\grundfos-express-tools\GES_Dimension_Expansion"
-myFile = "Mech GRP foundation for VLSE rev6.xlsx"
+myDir = r"C:\Projects\2022\Michaels_Code\grundfos-express-tools\GES_Dimension_Expansion"
+myFile = "Mech GRP foundation for NBS_CUE rev3.xlsx"
 filePath = os.path.join(myDir, myFile)
-tabName = "GES_VLSE"
+tabName = "GES_NBS+CUE"
 
 # Here are the 2 columns of interest
-colN = "Branch Size Range, Numerical List (inches)"
-colV = "Header Size Range, Numerical List (inches)"
+# colN = "Branch Size Range, Numerical List (inches)"
+# colV = "Header Size Range, Numerical List (inches)"
+colN='Branch List, Numerical'
+colV="Header List, Numerical"
 
 # Creates dataframe from excel tab of interest
-data = pd.read_excel(filePath, sheet_name='GES_VLSE', header=0, index_col=False)
+data = pd.read_excel(filePath, sheet_name=tabName, header=0, index_col=False)
 
 # This creates a new empty dataframe which will hold the new rows
 column_names = data.columns
@@ -107,13 +110,13 @@ extraRowsDataframe['Valid Combo'] = np.where(extraRowsDataframe[colN] >= extraRo
 write_start = time.time()
 
 # Writing new dataframe to a new tab in the excel file
-with pd.ExcelWriter(filePath, engine="openpyxl", mode='a') as writer:  
-    extraRowsDataframe.to_excel(writer, sheet_name="Expanded Rows", index=False)
+with pd.ExcelWriter(filePath, engine="openpyxl", mode='a',if_sheet_exists='overlay') as writer:  
+    extraRowsDataframe.to_excel(writer, sheet_name="Expanded Rows", index=False,)
 
 time_logger.info(f"writing to excel sheet took {time.time() - write_start}")    
 
 # Hiding columns to match source excel sheet formatting
-wb = load_workbook(filePath)
+wb = load_workbook(filePath) 
 ws = wb["Expanded Rows"]
 ws.column_dimensions.group(start='P', end='R', hidden=True)
 ws.column_dimensions.group(start='T', end='U', hidden=True)

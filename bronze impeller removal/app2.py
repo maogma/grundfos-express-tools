@@ -5,11 +5,15 @@ import datetime
 import pandas as pd
 import numpy as np
 from openpyxl import load_workbook
+from concurrent.futures import ProcessPoolExecutor
 
-myDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\git\grundfos-express-tools\bronze impeller removal\input files"
+
+
+
+myDir = r"C:\Projects\2022\Michaels_Code\grundfos-express-tools\bronze impeller removal\input files"
 
 # Create working copy
-completed_dir = r"C:\Users\104092\OneDrive - Grundfos\Documents\git\grundfos-express-tools\bronze impeller removal\output files"
+completed_dir = r"C:\Projects\2022\Michaels_Code\grundfos-express-tools\bronze impeller removal\output files"
 # working_copy = os.path.join(completed_dir, add_filename_timestamp(file))
 # shutil.copyfile(filePath, working_copy) # creates working copy to leave original file untouched
 

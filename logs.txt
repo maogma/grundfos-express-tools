@@ -1,1 +1,13 @@
 08-11-2022 08:59:29 INFO     [suction_discharge_dimension_expander.py:102] iterating through dataframe took 3.1175854206085205
+09-16-2022 16:58:23 INFO     [suction_discharge_dimension_expander.py:104] iterating through dataframe took 6.150624513626099
+09-16-2022 16:58:24 INFO     [suction_discharge_dimension_expander.py:115] writing to excel sheet took 1.4193291664123535
+09-16-2022 16:58:33 INFO     [suction_discharge_dimension_expander.py:104] iterating through dataframe took 6.030580520629883
+09-16-2022 16:59:00 INFO     [suction_discharge_dimension_expander.py:104] iterating through dataframe took 5.928753137588501
+09-16-2022 17:02:46 INFO     [suction_discharge_dimension_expander.py:104] iterating through dataframe took 5.914804697036743
+09-16-2022 17:02:48 INFO     [suction_discharge_dimension_expander.py:115] writing to excel sheet took 1.9440596103668213
+09-19-2022 10:17:14 INFO     [suction_discharge_dimension_expander.py:104] iterating through dataframe took 96.57894539833069
+09-19-2022 10:17:27 INFO     [suction_discharge_dimension_expander.py:115] writing to excel sheet took 13.176097631454468
+09-19-2022 10:21:44 INFO     [suction_discharge_dimension_expander.py:104] iterating through dataframe took 95.37761282920837
+09-19-2022 10:21:56 INFO     [suction_discharge_dimension_expander.py:115] writing to excel sheet took 11.318129301071167
+09-19-2022 14:26:37 INFO     [suction_discharge_dimension_expander.py:104] iterating through dataframe took 40.67391514778137
+09-19-2022 14:26:44 INFO     [suction_discharge_dimension_expander.py:115] writing to excel sheet took 6.788881063461304
