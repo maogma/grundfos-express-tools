@@ -21,21 +21,22 @@ sheetname='Impeller'
 # futures_list=[]
 # results = []
 
-def print_file(file,lock):
-    lock.acquire()
+def print_file(file,queue:mp.Queue):
+    queue.get()
     _,fname=file
-    inpt=input('Test:')
-    lock.release()
     return fname
 
+
+#This can be used to spawn a multi-processing pool which waits for the user to input a function
 if __name__=='__main__':
     futures=[]
-    manager=mp.Manager()
-    lock=manager.Lock()
+    man=mp.Manager()
+    queue=man.Queue()
     start=time.time()
     with ProcessPoolExecutor() as executor:
         for file in files:
-            future=executor.submit(print_file,file,lock)
+            queue.put(input('Hello?:'))
+            future=executor.submit(print_file,file,queue)
             futures.append(future)
             future.result()
         for future in as_completed(futures):
