@@ -25,6 +25,7 @@ def read_files_in_dir(dir:FolderPath)->Generator[Callable,None,None]:
         yield _read_single_file(_file)
 
 
+
 def _read_single_file(file:FilePath,chunksize:bytes=1024,is_pool_ready:bool=False)->tuple[bytes,str]:
     f"""This method read in a file by a given chunk size.
         Params:
