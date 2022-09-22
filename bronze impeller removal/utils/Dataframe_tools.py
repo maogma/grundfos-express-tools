@@ -1,10 +1,76 @@
 import pandas as pd
 import numpy as np
-from pandas._typing import FilePath, ReadBuffer
+import inspect
+from pandas import DataFrame
+from pandas._typing import FilePath, ReadBuffer, DtypeArg, StorageOptions
+from pandas.util._decorators import Appender
+from typing import Optional, overload, Literal, Sequence, Hashable, Iterable, Callable
 from _types._types import *
 
 
+class PSD_BOM_Updates:
 
+    def _find_header_end(self, df: DataFrame) -> int:
+        for row in df.itertuples():
+            if row[1] == '[START]':
+                return int(row[0])
+
+    @overload
+    def _get_df(
+        io,
+        # sheet name is str or int -> DataFrame
+        sheet_name: str | int,
+        header: int | Sequence[int] | None = ...,
+        names=...,
+        index_col: int | Sequence[int] | None = ...,
+        usecols=...,
+        squeeze: bool | None = ...,
+        dtype: DtypeArg | None = ...,
+        engine: Literal["xlrd", "openpyxl", "odf", "pyxlsb"] | None = ...,
+        converters=...,
+        true_values: Iterable[Hashable] | None = ...,
+        false_values: Iterable[Hashable] | None = ...,
+        skiprows: Sequence[int] | int | Callable[[int], object] | None = ...,
+        nrows: int | None = ...,
+        na_values=...,
+        keep_default_na: bool = ...,
+        na_filter: bool = ...,
+        verbose: bool = ...,
+        parse_dates=...,
+        date_parser=...,
+        thousands: str | None = ...,
+        decimal: str = ...,
+        comment: str | None = ...,
+        skipfooter: int = ...,
+        convert_float: bool | None = ...,
+        mangle_dupe_cols: bool = ...,
+        storage_options: StorageOptions = ...,
+    ) -> tuple[DataFrame, DataFrame, int]: ...
+
+    @Appender(pd.read_excel.__doc__, join='')
+    def _get_df(self, **kwargs) -> Union[tuple[None, DataFrame, int], tuple[DataFrame, DataFrame, int]]:
+        if bool(kwargs.pop('use_header', False)):
+            head_bool = True
+        else:
+            head_bool = False
+        kwargs = {k: v for k, v in kwargs.items()
+                  if k in inspect.signature(pd.read_excel).parameters.keys()}
+        df = pd.read_excel(**kwargs)  # Reading the dataframe
+        header_size = self._find_header_end(
+            df)  # Getting the size of the header
+
+        # Need to get the other dataframes
+        psd_df = df.loc[header_size-1:, :]
+        psd_df.reset_index(drop=True, inplace=True)
+        psd_df.columns = psd_df.loc[0, :]
+        psd_df = psd_df.drop(0)
+        original_length = len(df)
+        # Lets Check if we are using the header df
+        if head_bool == True:
+            header = df.loc[:header_size-2, :]
+            return header, psd_df, (header_size,original_length)
+        else:
+            return None, psd_df, (header_size,original_length)
 
 
 def get_df(data: Union[FilePath, ReadBuffer[bytes], bytes], sheet_names: str | list[str]) -> pd.DataFrame:
