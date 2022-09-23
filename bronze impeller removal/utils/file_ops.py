@@ -10,6 +10,18 @@ def add_str_to_filename(filepath_to_copy: str,strng) -> str:
     working_copy = strng + " " + filename # adds timestamp to filename
     return(working_copy)
 
+def get_files_in_dir(dir:FolderPath,extension:list[str]|str|None=None):
+    arr=[]
+    filenames = next(walk(dir), (None, None, []))[2]
+    if extension:
+        for file in filenames:
+            if file.endswith((extension)):
+                arr.append(file)
+    else:
+        arr=filenames
+    return arr
+
+
 
 def read_files_in_dir(dir:FolderPath)->Generator[Callable,None,None]:
     """Iterates over a given directory
