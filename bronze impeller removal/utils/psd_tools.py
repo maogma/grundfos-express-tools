@@ -145,25 +145,28 @@ def write_new_PSD(file_name,
     keep.loc[0, 'Full Data'] = "[START]"
     num_rows = len(keep)
     keep.loc[num_rows, 'Full Data'] = "[END]"
-    append_location = length[1] - len(removals)
+    # append_location = length[1] - len(removals) #This is an issue
+    append_location = num_rows + psd_startrow
     after_end_row = num_rows + psd_startrow + 2
     wb = load_workbook(file_name)
     ws = wb[sheet_name]
     tabName = sheet_name + "Modified"
     wb.copy_worksheet(ws).title = tabName
     ws_modified = wb[tabName]
-    ws_modified.delete_rows(after_end_row, len(removals)-1)
-    end_cell = ws.cell(row=after_end_row-1, column=1)
+    ws_modified.insert_rows(after_end_row-1, len(removals))
+    for item in ws_modified.iter_rows(min_col=1, max_col=len(removals.columns), min_row=after_end_row+2*len(removals)-2, max_row=after_end_row+2*len(removals)-2):
+        for cell in item:
+            cell.value = ""
+            cell.fill = PatternFill(fill_type=None)
+    end_cell = ws_modified.cell(row=after_end_row-1, column=1)
     end_cell.fill = PatternFill(
         fill_type='solid', start_color="FFCC99", end_color="FFCC99")
     for rows in ws_modified.iter_rows(min_row=append_location+2, max_row=append_location+2, min_col=1, max_col=40):
         for cell in rows:
             cell.fill = PatternFill(
                 start_color="FF0000", end_color="FF0000", fill_type="solid")
-    col = ws_modified.column_dimensions['A']
-    col.border = Border(right=Side(style='thick'))
     wb.save(outPut_file_path)
-    del(ws, ws_modified, wb, end_cell, col)
+    del(ws, ws_modified, wb, end_cell)
     with pd.ExcelWriter(outPut_file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
         keep.to_excel(writer, sheet_name=tabName, index=False,
                       startrow=psd_startrow-1, startcol=psd_startcol)
