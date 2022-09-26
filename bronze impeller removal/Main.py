@@ -2,7 +2,7 @@ import time
 from concurrent.futures import ProcessPoolExecutor,as_completed
 from utils.psd_tools import process_dir,write_new_PSD
 from utils.Dataframe_tools import group_then_separate_by
-from utils.mp_psd import add_function_to_task
+from utils.mp_psd import add_function_to_task,multi_PSD
 from utils.file_ops import get_files_in_dir
 
 if __name__ == '__main__':
@@ -17,20 +17,15 @@ if __name__ == '__main__':
         96769271, 97780970, 96769280, 97780973
     ]
 
+    str_list = [str(numstr) for numstr in list_of_pns]
+
     #Only want to add an Impeller Sheet 
     sheet_list=[]
     sheet='Impeller'
     for file in get_files_in_dir(MYDIR,('.xlsx')):
         sheet_list.append([sheet])
-
+    
     tasks=process_dir(MYDIR,sheet_list,target_dir,False)
     add_function_to_task(tasks,group_then_separate_by,["Model", "Price ID"] ,"BOM",str_list=list_of_pns)
-    futures=[]
-    start=time.time()
-    with ProcessPoolExecutor() as executor:
-        for task in tasks:
-            future=executor.submit(write_new_PSD,*task)
-            futures.append(future)
-        for future in as_completed(futures):
-            future.result()
-    print(f'Process took {time.time()-start}')
+    
+    multi_PSD(tasks,write_new_PSD)

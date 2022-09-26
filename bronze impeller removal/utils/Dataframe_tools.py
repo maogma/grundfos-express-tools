@@ -1,3 +1,4 @@
+from matplotlib.mlab import psd
 import pandas as pd
 import numpy as np
 import inspect
@@ -7,6 +8,7 @@ from pandas.util._decorators import Appender
 from typing import Optional, overload, Literal, Sequence, Hashable, Iterable, Callable
 from _types._types import *
 
+
 class PSD_BOM_Updates:
 
     def _find_header_end(self, df: DataFrame) -> int:
@@ -14,14 +16,31 @@ class PSD_BOM_Updates:
             if row[1] == '[START]':
                 return int(row[0])
 
-    def _name_blank_cols(self,df):
-        col=df.columns.to_list()
-        count=1
-        for i,item in enumerate(col.copy()):
-            if str(item)=='nan':
-                col[i]=f"No Name {count}"
-                count+=1
+    def _name_blank_cols(self, df):
+        col = df.columns.to_list()
+        count = 1
+        for i, item in enumerate(col.copy()):
+            if str(item) == 'nan':
+                col[i] = f"No Name {count}"
+                count += 1
         return col
+    
+    def _remove_duplicates(self,df):
+        col = df.columns.to_list()
+        arr=[]
+        for i,item in enumerate(col):
+            if item in arr and ('Dummy '+item):
+                if ('Dummy '+item) not in arr:
+                    if col.count(item)>2:
+                        for i1 in range(col.count(item)):
+                            arr.append('Dummy '*(i1+1)+item)
+                    else:
+                        arr.append('Dummy '+item)
+                else:
+                    continue
+            else:
+                arr.append(item)
+        return arr
 
     @overload
     def _get_df(
@@ -64,21 +83,28 @@ class PSD_BOM_Updates:
         kwargs = {k: v for k, v in kwargs.items()
                   if k in inspect.signature(pd.read_excel).parameters.keys()}
         df = pd.read_excel(**kwargs)  # Reading the dataframe
-        header_size = self._find_header_end(df)  # Getting the size of the header
+        header_size = self._find_header_end(
+            df)  # Getting the size of the header
         # Need to get the other dataframes
         psd_df = df.loc[header_size-1:, :]
         psd_df.reset_index(drop=True, inplace=True)
         psd_df.columns = psd_df.loc[0, :]
-        psd_df.columns=self._name_blank_cols(psd_df)
+        psd_df.reset_index(drop=True, inplace=True)
+        psd_df.columns = self._name_blank_cols(psd_df)
+        ###ADDED###
+        psd_df.columns = self._remove_duplicates(psd_df)
+        
         psd_df = psd_df.drop(psd_df.index[0])
         psd_df.reset_index(drop=True, inplace=True)
         original_length = len(df)
+
         # Lets Check if we are using the header df
         if head_bool == True:
             header = df.loc[:header_size-2, :]
             return header, psd_df, (header_size, original_length)
         else:
             return None, psd_df, (header_size, original_length)
+
 
 class PipeUpdates:
 
@@ -139,7 +165,8 @@ class PipeUpdates:
             'Max Header Flow (gpm)'), reference_df, left_on="Max Header Flow (gpm)", right_on="Flow (gpm)", direction='backward')
         header_output_df.sort_values(by=['copy_index'], inplace=True)
 
-        output_df = pd.merge(branch_output_df, header_output_df, on="copy_index")
+        output_df = pd.merge(
+            branch_output_df, header_output_df, on="copy_index")
         output_df.drop(['copy_index'], axis=1, inplace=True)
 
         output_df["Max Branch Diameter (in.)"] = np.where(output_df["Max Branch Diameter (in.)"] ==
@@ -153,21 +180,23 @@ class PipeUpdates:
 
     def write_df_to_excel(df: pd.DataFrame, file_path: FilePath, sheet: str, **kwargs) -> None:
         """This function takes in a dataframe and writes it to the path given by the file path parameter.
-    
+
         Params:
             df: A pandas dataframe for a given sheet within an excel workbook.
             file_path: A file path to write the dataframe to.
             sheet: The name of the sheet you want to append to.
-    
+
         Returns:
             It returns nothing.
-    
+
         This function is a wrapper for the pandas ExcelWriter method in the sense that you can call this function instead of that one."""
         with pd.ExcelWriter(file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
             df.to_excel(writer, sheet_name=sheet, index=False, **kwargs)
 
+
 def group_then_separate_by(psd_data: DataFrame, list_of_cols: list, pn_col: str, str_list: list[str]) -> tuple[DataFrame, DataFrame]:
     """list of cols are grouping categories. pn_col is the column that contains pns to find matches on."""
+    psd_data = psd_data.astype({pn_col: str_list.__getitem__(0).__class__}) #Converts BOM column into the same datatype as the pn list 
     groups = psd_data.groupby(
         list_of_cols)  # Had to play around with this to get the right groupings
 
