@@ -1,9 +1,5 @@
 import time
-from concurrent.futures import ProcessPoolExecutor,as_completed
-from utils.psd_tools import process_dir,write_new_PSD
-from utils.Dataframe_tools import group_then_separate_by
-from utils.mp_psd import add_function_to_task,multi_PSD
-from utils.file_ops import get_files_in_dir
+from utils import add_function_to_task,multi_PSD,get_files_in_dir,group_then_separate_by,process_dir,write_new_PSD
 
 if __name__ == '__main__':
 
