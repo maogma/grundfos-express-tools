@@ -119,55 +119,60 @@ def process_dir(dir, list_sheet_lists, output_dir: str, one_removal_note: bool):
 
 
 def write_new_PSD(file_name,
-psd_data,
-grouping_func:Callable[[ParamSpec.args],DataFrame],
-length:tuple[int,int],
-removal_note,
-sheet_name,
-outPut_file_path
-):
+                  psd_data,
+                  grouping_func: Callable[[ParamSpec.args], DataFrame],
+                  length: tuple[int, int],
+                  removal_note,
+                  sheet_name,
+                  outPut_file_path
+                  ):
     print("Opening file for updates: {}".format(os.path.basename(file_name)))
-    psd_startrow=length[0]
-    psd_startcol=0
-    end_row = psd_data[psd_data['Full Data'] == '[END]'].index.to_list()[0] 
+    psd_startrow = length[0]
+    psd_startcol = 0
+    end_row = psd_data[psd_data['Full Data'] == '[END]'].index.to_list()[0]
     psd_data = psd_data.iloc[:end_row]
-    removals, keep = grouping_func[0](psd_data,*grouping_func[1],**grouping_func[2])
+    removals, keep = grouping_func[0](
+        psd_data, *grouping_func[1], **grouping_func[2])
     removals.loc[removals["Full Data"] == "[START]", "Full Data"] = ""
-    new_row = pd.DataFrame({'ID': removal_note}, index =[0])
+    new_row = pd.DataFrame({'ID': removal_note}, index=[0])
     removals = pd.concat([new_row, removals[:]]).reset_index()
     column_list = keep.columns
     removals = removals[column_list]
     removals.sort_values(by=['ID'], inplace=True)
-    keep.loc[0,'Full Data'] = np.nan
+    keep.loc[0, 'Full Data'] = np.nan
     keep.sort_values(by=['ID'], inplace=True)
     keep.reset_index(drop=True, inplace=True)
-    keep.loc[0,'Full Data'] = "[START]"
-    num_rows = len(keep)                      
-    keep.loc[num_rows,'Full Data']="[END]"
-    append_location=num_rows + psd_startrow
+    keep.loc[0, 'Full Data'] = "[START]"
+    num_rows = len(keep)
+    keep.loc[num_rows, 'Full Data'] = "[END]"
+    append_location = num_rows + psd_startrow
     after_end_row = num_rows + psd_startrow + 2
     wb = load_workbook(file_name)
     ws = wb[sheet_name]
     tabName = sheet_name + "Modified"
     wb.copy_worksheet(ws).title = tabName
     ws_modified = wb[tabName]
-    ws_modified.insert_rows(after_end_row-1,len(removals))
-    for item in ws_modified.iter_rows(min_col=1,max_col=len(removals.columns),min_row=after_end_row+2*len(removals)-2,max_row=after_end_row+2*len(removals)-2):
+    ws_modified.insert_rows(after_end_row-1+len(removals), 2)
+    for item in ws_modified.iter_rows(min_col=1, max_col=len(removals.columns), min_row=after_end_row+len(removals)-2, max_row=after_end_row+len(removals)-2):
         for cell in item:
-            cell.value=""
-            cell.fill=PatternFill(fill_type=None)
-    end_cell = ws_modified.cell(row=after_end_row-1, column=1)
-    end_cell.fill=PatternFill(fill_type='solid',start_color="FFCC99",end_color="FFCC99")
+            cell.fill = PatternFill(fill_type=None)
+    end_cell = ws_modified.cell(after_end_row-1, column=1)
+    end_cell.fill = PatternFill(
+        fill_type='solid', start_color="FFCC99", end_color="FFCC99")
     for rows in ws_modified.iter_rows(min_row=append_location+2, max_row=append_location+2, min_col=1, max_col=40):
         for cell in rows:
-            cell.fill = PatternFill(start_color="FF0000", end_color="FF0000", fill_type="solid")
-    print(len(removals),num_rows,psd_startrow,length[1])
-    if len(removals)+num_rows+psd_startrow==length[1]:
+            cell.fill = PatternFill(
+                start_color="FF0000", end_color="FF0000", fill_type="solid")
+    if len(removals)+num_rows+psd_startrow == length[1]:
         print('Yes')
         ws_modified.delete_rows(length[1], len(removals)-1)
     wb.save(outPut_file_path)
-    del(ws,ws_modified,wb,end_cell)
-    with pd.ExcelWriter(outPut_file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:  
-            keep.to_excel(writer, sheet_name=tabName, index=False, startrow=psd_startrow-1, startcol=psd_startcol)
-            removals.to_excel(writer, sheet_name=tabName, index=False, header=False, startrow=append_location+1, startcol=psd_startcol)
-    print("Closing file: {}".format(os.path.basename(file_name)),"\n",f"Wrote file: {os.path.basename(outPut_file_path)} to {os.path.dirname(outPut_file_path)}")
+    del(ws, ws_modified, wb, end_cell)
+    with pd.ExcelWriter(outPut_file_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
+        keep.to_excel(writer, sheet_name=tabName, index=False,
+                      startrow=psd_startrow-1, startcol=psd_startcol)
+        removals.to_excel(writer, sheet_name=tabName, index=False,
+                          header=False, startrow=append_location+1, startcol=psd_startcol)
+    print("Closing file: {}".format(os.path.basename(file_name)), "\n",
+          f"Wrote file: {os.path.basename(outPut_file_path)} to {os.path.dirname(outPut_file_path)}")
+

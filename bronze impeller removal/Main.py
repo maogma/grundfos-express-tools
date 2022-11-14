@@ -8,10 +8,7 @@ if __name__ == '__main__':
     target_dir=r'C:\Projects\2022\Michaels_Code\grundfos-express-tools\bronze impeller removal\output files'
 
     list_of_pns = [
-        96699290, 97775274, 96699299, 97775277, 96778078,
-        97780992, 96699305, 96769184, 97778033, 96769190,
-        96769205, 97778039, 96769256, 96896891, 96769259,
-        96769271, 97780970, 96769280, 97780973
+        97775291,96699335,96769175,97775278,96769178,96769229,97780146
     ]
 #     list_of_pns=[98876008,
 # 98876012]
@@ -20,7 +17,7 @@ if __name__ == '__main__':
 
     #Only want to add an Impeller Sheet 
     sheet_list=[]
-    sheet='Impeller'
+    sheet='ImpellerModified'
 
     for file in get_files_in_dir(MYDIR,('.xlsx')):
         sheet_list.append([sheet])

@@ -215,7 +215,10 @@ def group_then_separate_by(psd_data: DataFrame, list_of_cols: list, pn_col: str,
             df_list_to_keep.append(frame)
 
     # Concatenating list of dfs to single dfs.
-    removals = pd.concat(df_list_to_remove)
+    if len(df_list_to_remove)>0:
+        removals = pd.concat(df_list_to_remove)
+    else:
+        removals=pd.DataFrame(np.nan,index=[0],columns=psd_data.columns)
     keep = pd.concat(df_list_to_keep)
 
     return removals, keep
