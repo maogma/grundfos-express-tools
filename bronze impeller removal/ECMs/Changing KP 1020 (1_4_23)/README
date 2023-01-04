@@ -1,2 +1,13 @@
+Discovered that that ID from the Product associated with 1020-3/4 carries through to every instance in the database. So I can easily describe all instances in the CKB
+with four distinct patters and they are shown below:
 
+These 3 can be changed as follows:
+
+1020-3/4 -> 1020-5/6
+1020-3/4 KP -> 1020-5/6 KP
+1020-3_4-KP -> 1020-5_6-KP
+
+The Fourth is not quite as easy 
+
+Desc-1020-3_4-KP_4 -> REGEX = Desc-1020-3_4-KP_(3|4)
 
