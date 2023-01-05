@@ -69,7 +69,7 @@ def process_sheet(file: tuple[Union[FilePath, ReadBuffer[bytes], bytes], str],
     Params:
     data: Data comes from the binary of the file or the file path. 
     sheet_name: The name of the sheet to process.
-    removal_note: Does the sheet have its own removal note or does it share one with the entire workbook (file). The default is set to it shares a note."""
+    removal_note: Does the sheet have its own removal note or does it share one with the entire workbook (file)."""
     # Check if sheetname is a valid sheet in the file
     data, fname = file
     try:
@@ -175,4 +175,3 @@ def write_new_PSD(file_name,
                           header=False, startrow=append_location+1, startcol=psd_startcol)
     print("Closing file: {}".format(os.path.basename(file_name)), "\n",
           f"Wrote file: {os.path.basename(outPut_file_path)} to {os.path.dirname(outPut_file_path)}")
-
