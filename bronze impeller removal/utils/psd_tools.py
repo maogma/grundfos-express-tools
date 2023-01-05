@@ -152,7 +152,7 @@ def write_new_PSD(file_name,
     tabName = sheet_name + "Modified"
     wb.copy_worksheet(ws).title = tabName
     ws_modified = wb[tabName]
-    ws_modified.insert_rows(after_end_row-1+len(removals), 2)
+    ws_modified.insert_rows(after_end_row-2+len(removals), 2)
     for item in ws_modified.iter_rows(min_col=1, max_col=len(removals.columns), min_row=after_end_row+len(removals)-2, max_row=after_end_row+len(removals)-2):
         for cell in item:
             cell.fill = PatternFill(fill_type=None)
@@ -164,7 +164,6 @@ def write_new_PSD(file_name,
             cell.fill = PatternFill(
                 start_color="FF0000", end_color="FF0000", fill_type="solid")
     if len(removals)+num_rows+psd_startrow == length[1]:
-        print('Yes')
         ws_modified.delete_rows(length[1], len(removals)-1)
     wb.save(outPut_file_path)
     del(ws, ws_modified, wb, end_cell)
