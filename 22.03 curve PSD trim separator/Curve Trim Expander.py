@@ -52,19 +52,22 @@ if __name__ == "__main__":
     import os
     from openpyxl import load_workbook
     import shutil
+    import time
 
     ########################################################################
     # NEED TO MODIFY FOLDERS, FILENAMES BELOW TO REFLECT FOLDER SETUP
     ########################################################################
-    myDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\10-19 Projects\12 NBS Curve PSD Separation\12.01 Original Files"
+    myDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\10-19 Projects\12 NBS Curve PSD Separation\testing"
     myFile = "GXS Curve_Conexus_V2.xlsx"
     original = os.path.join(myDir, myFile)
 
     filename, file_ext = myFile.split(os.extsep)
 
-    targetDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\10-19 Projects\12 NBS Curve PSD Separation\12.02 Output Files"
+    targetDir = r"C:\Users\104092\OneDrive - Grundfos\Documents\10-19 Projects\12 NBS Curve PSD Separation\testing"
     std_target = os.path.join(targetDir, filename + " - std models." + file_ext)
     ########################################################################
+
+    start = time.time()
     shutil.copyfile(original, std_target)                                               # Create copy to leave original untouched
 
     wb_std = load_workbook(std_target, data_only=True)
@@ -94,3 +97,4 @@ if __name__ == "__main__":
         
     wb_std._sheets.sort(key=lambda ws: ws.title)                                        # This sorts the new excel tabs by name.
     wb_std.save(std_target)
+    print(f'Script took {time.time() - start} seconds')
