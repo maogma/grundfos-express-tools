@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<FirepondSPCDatabase version="3.0">
+<controlnode/>
+<models/>
+<instances>
+<class name="Magna_StdPumps">
+<instance name="ConTab_Magna_001">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_001"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-80 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-80 GF 115V"/>
+<attribute name="PartNumber" type="text" value="98126800"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="40.2"/>
+<attribute name="ListPrice" type="double" value="3898"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_002">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_002"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-80 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-80 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126828"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="40"/>
+<attribute name="ListPrice" type="double" value="3898"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_003">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_003"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-80 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-80 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="98126802"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="40"/>
+<attribute name="ListPrice" type="double" value="6009"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_004">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_004"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-80 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-80 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126830"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="40"/>
+<attribute name="ListPrice" type="double" value="6009"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_005">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_005"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-120 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-120 GF 115V"/>
+<attribute name="PartNumber" type="text" value="98126804"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="38.7"/>
+<attribute name="ListPrice" type="double" value="4481"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_006">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_006"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-120 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-120 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126832"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="38.7"/>
+<attribute name="ListPrice" type="double" value="4481"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_007">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_007"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-120 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-120 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="98126806"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="38.7"/>
+<attribute name="ListPrice" type="double" value="6932"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_008">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_008"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-120 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-120 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126834"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="40.1"/>
+<attribute name="ListPrice" type="double" value="6932"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_009">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_009"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-180 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-180 GF 115V"/>
+<attribute name="PartNumber" type="text" value="98126808"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="38.7"/>
+<attribute name="ListPrice" type="double" value="6337"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_010">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_010"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-180 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-180 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126836"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="38.7"/>
+<attribute name="ListPrice" type="double" value="6337"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_011">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_011"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-180 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-180 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="98126810"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="38.7"/>
+<attribute name="ListPrice" type="double" value="9819"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_012">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_012"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 40-180 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 40-180 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126838"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="38.7"/>
+<attribute name="ListPrice" type="double" value="9819"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_013">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_013"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-80 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-80 GF 115V"/>
+<attribute name="PartNumber" type="text" value="98126812"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="43.4"/>
+<attribute name="ListPrice" type="double" value="5177"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_014">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_014"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-80 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-80 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126840"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="43.4"/>
+<attribute name="ListPrice" type="double" value="5177"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_015">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_015"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-80 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-80 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="98126814"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="43.4"/>
+<attribute name="ListPrice" type="double" value="8019"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_016">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_016"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-80 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-80 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126842"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="46.2"/>
+<attribute name="ListPrice" type="double" value="8019"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_017">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_017"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-150 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-150 GF 115V"/>
+<attribute name="PartNumber" type="text" value="98126816"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="46.8"/>
+<attribute name="ListPrice" type="double" value="6513"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_018">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_018"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-150 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-150 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126844"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="46.8"/>
+<attribute name="ListPrice" type="double" value="6513"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_019">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_019"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-150 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-150 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="98126818"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="46.8"/>
+<attribute name="ListPrice" type="double" value="10097"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_020">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_020"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-150 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-150 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126846"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="46.8"/>
+<attribute name="ListPrice" type="double" value="10089"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_021">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_021"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 65-120 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 65-120 GF 115V"/>
+<attribute name="PartNumber" type="text" value="98124696"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="52.4"/>
+<attribute name="ListPrice" type="double" value="7038"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_022">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_022"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 65-120 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 65-120 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126848"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="52.4"/>
+<attribute name="ListPrice" type="double" value="7038"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_023">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_023"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 65-120 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 65-120 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="98124702"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="52.4"/>
+<attribute name="ListPrice" type="double" value="10901"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_024">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_024"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 65-120 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 65-120 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126850"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="52.4"/>
+<attribute name="ListPrice" type="double" value="10901"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_025">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_025"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 65-150 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 65-150 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126852"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="59.2"/>
+<attribute name="ListPrice" type="double" value="8139"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_026">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_026"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 65-150 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 65-150 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126854"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="59.2"/>
+<attribute name="ListPrice" type="double" value="12607"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_027">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_027"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 80-100 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 80-100 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126856"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="71.8"/>
+<attribute name="ListPrice" type="double" value="8254"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_028">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_028"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 80-100 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 80-100 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126858"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="71.8"/>
+<attribute name="ListPrice" type="double" value="12792"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_029">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_029"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 100-120 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 100-120 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126860"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="81.6"/>
+<attribute name="ListPrice" type="double" value="9241"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_030">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_030"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 100-120 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 100-120 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="98126862"/>
+<attribute name="MTL_GRP" type="text" value="UPXLA"/>
+<attribute name="Weight" type="double" value="81.6"/>
+<attribute name="ListPrice" type="double" value="14323"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_031">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_031"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 D 65-150 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 D 65-150 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126863"/>
+<attribute name="MTL_GRP" type="text" value="UPTXA"/>
+<attribute name="Weight" type="double" value="118"/>
+<attribute name="ListPrice" type="double" value="15017"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_032">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_032"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 D 80-100 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 D 80-100 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126864"/>
+<attribute name="MTL_GRP" type="text" value="UPTXA"/>
+<attribute name="Weight" type="double" value="138"/>
+<attribute name="ListPrice" type="double" value="15228"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_033">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_033"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 D 100-120 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 D 100-120 GF 230V"/>
+<attribute name="PartNumber" type="text" value="98126865"/>
+<attribute name="MTL_GRP" type="text" value="UPTXA"/>
+<attribute name="Weight" type="double" value="160"/>
+<attribute name="ListPrice" type="double" value="17070"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_034">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_034"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 32-60 GF 115/230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 32-60 GF 115/230V"/>
+<attribute name="PartNumber" type="text" value="98126820"/>
+<attribute name="MTL_GRP" type="text" value="UPMSA"/>
+<attribute name="Weight" type="double" value="14.2"/>
+<attribute name="ListPrice" type="double" value="1969"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_035">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_035"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 32-60 GF N 115/230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 32-60 GF N 115/230V"/>
+<attribute name="PartNumber" type="text" value="98126822"/>
+<attribute name="MTL_GRP" type="text" value="UPMSA"/>
+<attribute name="Weight" type="double" value="14.2"/>
+<attribute name="ListPrice" type="double" value="2929"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_036">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_036"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 32-100 GF 115/230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 32-100 GF 115/230V"/>
+<attribute name="PartNumber" type="text" value="98126824"/>
+<attribute name="MTL_GRP" type="text" value="UPMMA"/>
+<attribute name="Weight" type="double" value="14.2"/>
+<attribute name="ListPrice" type="double" value="2494"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_037">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_037"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 32-100 GF N 115/230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 32-100 GF N 115/230V"/>
+<attribute name="PartNumber" type="text" value="98126826"/>
+<attribute name="MTL_GRP" type="text" value="UPMMA"/>
+<attribute name="Weight" type="double" value="14.2"/>
+<attribute name="ListPrice" type="double" value="3562"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_038">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_038"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 32-120 GF 115/230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 32-120 GF 115/230V"/>
+<attribute name="PartNumber" type="text" value="99833304"/>
+<attribute name="MTL_GRP" type="text" value="UPMSA"/>
+<attribute name="Weight" type="double" value="17.64"/>
+<attribute name="ListPrice" type="double" value="2619"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_039">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_039"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 32-120 GF N 115/230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 32-120 GF N 115/230V"/>
+<attribute name="PartNumber" type="text" value="99833308"/>
+<attribute name="MTL_GRP" type="text" value="UPMSA"/>
+<attribute name="Weight" type="double" value="17.64"/>
+<attribute name="ListPrice" type="double" value="3740"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_040">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_040"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-120 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-120 GF 115V"/>
+<attribute name="PartNumber" type="text" value="99833473"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="44.1"/>
+<attribute name="ListPrice" type="double" value="5786"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_041">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_041"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-120 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-120 GF 230V"/>
+<attribute name="PartNumber" type="text" value="99833476"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="44.1"/>
+<attribute name="ListPrice" type="double" value="5786"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_042">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_042"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-120 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-120 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="99833475"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="44.1"/>
+<attribute name="ListPrice" type="double" value="8968"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_043">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_043"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-120 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-120 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="99833477"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="44.1"/>
+<attribute name="ListPrice" type="double" value="8968"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_044">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_044"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-180 GF 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-180 GF 115V"/>
+<attribute name="PartNumber" type="text" value="99833480"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="48.51"/>
+<attribute name="ListPrice" type="double" value="7240"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_045">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_045"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-180 GF 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-180 GF 230V"/>
+<attribute name="PartNumber" type="text" value="99833483"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="48.51"/>
+<attribute name="ListPrice" type="double" value="7240"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_046">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_046"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-180 GF N 115V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-180 GF N 115V"/>
+<attribute name="PartNumber" type="text" value="99833481"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="48.51"/>
+<attribute name="ListPrice" type="double" value="11220"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+<instance name="ConTab_Magna_047">
+<class>
+<ref name="Magna_StdPumps"/>
+</class>
+<chartype value="doublebyte"/>
+<attribute name="ID" type="text" value="ConTab_Magna_047"/>
+<attribute name="ProductLine" type="text" value="MAGNA"/>
+<attribute name="Model" type="text" value="MAGNA3 50-180 GF N 230V"/>
+<attribute name="SupplierID" type="text" value="MAGNA3 50-180 GF N 230V"/>
+<attribute name="PartNumber" type="text" value="99833485"/>
+<attribute name="MTL_GRP" type="text" value="UPMLA"/>
+<attribute name="Weight" type="double" value="48.51"/>
+<attribute name="ListPrice" type="double" value="11220"/>
+<attribute name="LeadTime" type="text" value="2 weeks"/>
+</instance>
+</class>
+</instances>
+</FirepondSPCDatabase>

@@ -1,0 +1,4 @@
+08-03-2022 14:03:05 INFO     [suction_discharge_dimension_expander.py:102] iterating through dataframe took 1.3880269527435303
+08-03-2022 14:03:40 INFO     [suction_discharge_dimension_expander.py:102] iterating through dataframe took 1.182058334350586
+08-03-2022 14:04:46 INFO     [suction_discharge_dimension_expander.py:102] iterating through dataframe took 18.77694344520569
+08-03-2022 14:04:50 INFO     [suction_discharge_dimension_expander.py:113] writing to excel sheet took 3.2501773834228516
