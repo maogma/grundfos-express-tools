@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump Curve Web Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="container">
+        <h1>Pump Curve Input Form</h1>
+        <form action="/results" method="POST">
+            <div class="form-group">
+                <label for="partNumber">Part Number:</label>
+                <input type="text" id="partNumber" name="partNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="n2">New Speed (N2):</label>
+                <input type="number" id="n2" name="n2" required>
+            </div>
+            <div class="form-group">
+                <label for="curveType">Select Curve Type:</label><br>
+                <input type="radio" id="efficiency" name="curveType" value="Efficiency" required>
+                <label for="efficiency">Efficiency</label><br>
+                <input type="radio" id="power" name="curveType" value="Power">
+                <label for="power">Power</label><br>
+                <input type="radio" id="head" name="curveType" value="Head">
+                <label for="head">Head</label><br>
+                <input type="radio" id="npsh" name="curveType" value="NPSH">
+                <label for="npsh">NPSH</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
